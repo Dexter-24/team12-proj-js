@@ -1,6 +1,13 @@
+const LOCAL_STORAGE_KEY = 'LS_KEY';
+
 function add(data) {
-    const array = JSON.parse(localStorage.getItem("LS_KEY")) || [];
-    array.push(data);
-    localStorage.setItem("LS_KEY", JSON.stringify(array));
-} 
-export const localStorageAPI = {add};
+  const array = getAll();
+  array.push(data);
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(array));
+}
+
+function getAll() {
+  return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+}
+
+export const localStorageAPI = { add, getAll };

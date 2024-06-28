@@ -1,7 +1,9 @@
+import { nanoid } from 'nanoid';
+
 export function createData(evt) {
-const data = {};
-    new FormData(evt.target).forEach((value, key) => {
-        data[key] = value;
-    });
-    return data;
+  const data = { id: nanoid() };
+  new FormData(evt.target).forEach((value, key) => {
+    data[key] = value;
+  });
+  return data;
 }
